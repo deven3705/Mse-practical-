@@ -1,1 +1,157 @@
+#include<iostream>
+using namespace std;
 
+class student
+{ 
+    public:
+     int id,result;
+}stud[10];
+
+int main(){
+    int i,pass=0, fail=0;
+    for(i=0;i<10;i++)
+    {
+        cout<<"Enter ID: " ;
+        cin>> stud[i].id;
+        
+        cout << "Enter 1 for pass & 2 for fail: ";
+        cin>> stud[i].result;
+        
+        if(stud[i].result == 1)
+            pass++;
+        else
+            fail++;
+    }
+
+    cout<<"\tNo of Passed student:\t"<<pass;
+    cout<<"\tNo of Failed student:\t"<<fail;
+
+    if(pass>8)
+        cout<<"\n\tRaise Tution..!";
+    else
+    cout<<"\nNeed Improvement";
+
+return 0;
+}
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+class student
+{ 
+    public:
+     int id,result;
+}stud[10];
+
+void countResults(int &pass, int &fail) {
+    pass = 0;
+    fail = 0;
+    for(int i=0; i<10; i++) {
+        if(stud[i].result == 1)
+            pass++;
+        else
+            fail++;
+    }
+}
+
+void countResults() {
+    int pass = 0;
+    int fail = 0;
+    for(int i=0; i<10; i++) {
+        if(stud[i].result == 1)
+            pass++;
+        else
+            fail++;
+    }
+    cout<<"\tNo of Passed student:\t"<<pass;
+    cout<<"\tNo of Failed student:\t"<<fail;
+
+    if(pass>8)
+        cout<<"\n\tRaise Tuition..!";
+    else
+        cout<<"\nNeed Improvement";
+}
+
+int main(){
+    int i, pass, fail;
+
+    for(i=0;i<10;i++)
+    {
+        cout<<"Enter ID: " ;
+        cin>> stud[i].id;
+        
+        cout << "Enter 1 for pass & 2 for fail: ";
+        cin>> stud[i].result;
+    }
+
+    countResults(pass, fail);
+    countResults();
+
+    return 0;
+}
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+class student
+{ 
+    public:
+     int id,result;
+}stud[10];
+
+class Results
+{
+    public:
+        int pass;
+        int fail;
+
+        Results() : pass(0), fail(0) {}
+
+        void operator=(const Results &obj)
+        {
+            this->pass = obj.pass;
+            this->fail = obj.fail;
+        }
+};
+
+int main(){
+    int i;
+    Results totalResults;
+
+    for(i=0;i<10;i++)
+    {
+        cout<<"Enter ID: " ;
+        cin>> stud[i].id;
+        
+        cout << "Enter 1 for pass & 2 for fail: ";
+        cin>> stud[i].result;
+        
+        if(stud[i].result == 1)
+            totalResults.pass++;
+        else
+            totalResults.fail++;
+    }
+
+    cout<<"\tNo of Passed student:\t"<<totalResults.pass;
+    cout<<"\tNo of Failed student:\t"<<totalResults.fail;
+
+    if(totalResults.pass>8)
+        cout<<"\n\tRaise Tution..!";
+    else
+        cout<<"\nNeed Improvement";
+
+    Results anotherResult;
+    anotherResult = totalResults;
+
+    return 0;
+}
